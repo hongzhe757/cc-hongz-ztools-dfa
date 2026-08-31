@@ -56,4 +56,38 @@ public class SensitiveUtilTest {
     private static void extracted() {
         SensitiveUtil.init(ListUtil.of("12宝宝龙", "34皮卡丘"));
     }
+
+    @Test
+    @DisplayName("是否已初始化")
+    public void isInitedTest() {
+        SensitiveUtil.init(ListUtil.of("黑", "红"));
+        assertTrue(SensitiveUtil.isInited());
+    }
+
+    @Test
+    @DisplayName("是否包含敏感词")
+    public void containsSensitiveTest() {
+        SensitiveUtil.init(ListUtil.of("黑", "红"));
+        assertTrue(SensitiveUtil.containsSensitive("这件黑大衣"));
+        assertFalse(SensitiveUtil.containsSensitive("这件大衣"));
+    }
+
+    @Test
+    @DisplayName("查找第一个敏感词")
+    public void getFoundFirstSensitiveTest() {
+        SensitiveUtil.init(ListUtil.of("黑", "红"));
+        final FoundWord foundWord = SensitiveUtil.getFoundFirstSensitive("这件黑大衣");
+        assertEquals("黑", foundWord.getWord());
+    }
+
+    @Test
+    @DisplayName("查找所有敏感词")
+    public void getFoundAllSensitiveTest() {
+        SensitiveUtil.init(ListUtil.of("黑", "红"));
+        final List<FoundWord> foundWords = SensitiveUtil.getFoundAllSensitive("黑红");
+        assertEquals(2, foundWords.size());
+        assertEquals("黑", foundWords.get(0).getWord());
+        assertEquals("红", foundWords.get(1).getWord());
+    }
+
 }

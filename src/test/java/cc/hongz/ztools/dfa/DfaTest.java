@@ -206,4 +206,40 @@ public class DfaTest {
         tree.addWord("出锅");
         return tree;
     }
+
+    @Test
+    @DisplayName("是否匹配")
+    public void isMatchTest() {
+        final WordTree tree = new WordTree();
+        tree.addWord("黑");
+        assertTrue(tree.isMatch("黑大衣"));
+        assertFalse(tree.isMatch("白大衣"));
+    }
+
+    @Test
+    @DisplayName("获取第一个匹配词")
+    public void matchTest() {
+        final WordTree tree = new WordTree();
+        tree.addWord("黑");
+        assertEquals("黑", tree.match("黑大衣"));
+    }
+
+    @Test
+    @DisplayName("获取第一个匹配词对象")
+    public void matchWordTest() {
+        final WordTree tree = new WordTree();
+        tree.addWord("黑");
+        final FoundWord foundWord = tree.matchWord("黑大衣");
+        assertEquals("黑", foundWord.getWord());
+    }
+
+    @Test
+    @DisplayName("添加多个单词集合")
+    public void addWordsCollectionTest() {
+        final WordTree tree = new WordTree();
+        tree.addWords(CollUtil.newArrayList("黑", "红"));
+        assertTrue(tree.isMatch("黑"));
+        assertTrue(tree.isMatch("红"));
+    }
+
 }
