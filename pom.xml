@@ -15,7 +15,7 @@
 
 	<artifactId>cc-hongz-ztools-dfa</artifactId>
 	<name>${project.artifactId}</name>
-	<description>基于DFA的关键词查找模块（对齐 hutool-dfa）</description>
+	<description>基于DFA的关键词查找模块</description>
 
 	<properties>
 		<Automatic-Module-Name>cc.hongz.ztools.dfa</Automatic-Module-Name>
