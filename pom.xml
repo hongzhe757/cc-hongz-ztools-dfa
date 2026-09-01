@@ -22,16 +22,19 @@
 	</properties>
 
 	<dependencies>
+		<!-- ztools JSON 序列化 -->
 		<dependency>
 			<groupId>cc.hongz</groupId>
 			<artifactId>cc-hongz-ztools-json</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+			<!-- JUnit5 测试框架 -->
 			<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Lombok 测试去样板 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
